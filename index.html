@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+  <head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="description" content=""> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <title>FullScreenAPI Demo</title> 
+  </head> 
+  <body> 
+    <main class="main_wrapper">
+      <div class="button_wrapper">
+        <button class="button" onClick="displayInFullscreen(html)">
+          フルスクリーンにする   
+        </button>
+
+        <button class="button"onClick="exitFullscreen()">
+          フルスクリーンを解除する
+        </button>
+
+        <button class="button" onClick="toggleFullscreen()">
+          フルスクリーンを切替
+        </button>
+      </div>
+
+      <div class="gopher_kun_wrapper">
+        <h5>ゴーファーくんをタップすると巨大化します</h5>
+        <img src="assets/images/gopher_kun.png" class="gopher_kun" onClick="toggleFullscreen(this)">
+        <div class="license">
+          The Go gopher was created by 
+          <a href="https://reneefrench.blogspot.com/" target="_blank">Renée French</a>.
+          <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" target="_blank">
+            <img 
+              alt="Creative Commons License" 
+              style="border-width:0" 
+              src="assets/images/creative_commons.png" 
+            />
+          </a> 
+        </div>
+      </div>
+    </main>
+  </body> 
+</html>
+
+<script>
+  const html = document.documentElement
+
+  const displayInFullscreen = (element) => {
+    element.requestFullscreen = element.requestFullscreen || 
+                                element.webkitRequestFullscreen || 
+                                element.msRequestFullscreen
+    element.requestFullscreen()
+  }
+
+  const exitFullscreen = () => {
+    document.exitFullscreen = document.exitFullscreen ||
+                              document.webkitExitFullscreen ||
+                              document.msExitFullscreen 
+
+    document.exitFullscreen()
+  }
+
+  const getFullscreenElement = () => {
+    return document.fullscreenElement ||
+           document.webkitFullscreenElement ||
+           document.msFullscreenElement  
+  }
+
+  const toggleFullscreen = (element = html) => {
+    const fullScreenElement = getFullscreenElement()
+
+    if (fullScreenElement) {
+      exitFullscreen()
+    } else {
+      displayInFullscreen(element)
+    }
+  }
+
+  (() => {
+    if (!isFullscreenEnabled()) {
+      alert('フルスクリーン機能が利用できません。')
+    }
+  })()
+</script>
+
+<style>
+.button_wrapper {
+  margin: 36px auto;
+  text-align: center;
+}
+
+.button {
+  width: 11rem;
+  margin: auto auto 8px;
+}
+
+.gopher_kun_wrapper {
+  margin: 52px auto;
+  text-align: center;
+  font-size: 20px;
+}
+
+.gopher_kun {
+  margin: auto;
+  cursor: pointer;
+}
+
+.license {
+  font-size: 12px;
+}
+</style>
