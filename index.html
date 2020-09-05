@@ -45,27 +45,56 @@
 <script>
   const html = document.documentElement
 
+  /**
+   * フルスクリーンが利用可能かを返す
+   * @returns {boolean}
+   */
+  const isFullscreenEnabled = () => {
+    return document.fullscreenEnabled ||
+           document.webkitFullscreenEnabled ||
+           document.msFullScreenEnabled
+  }
+
+  /**
+   * 指定した要素をフルスクリーン表示する
+   *  @param element - フルスクリーンにするHTML, SVG, Math要素 
+   */
   const displayInFullscreen = (element) => {
     element.requestFullscreen = element.requestFullscreen || 
                                 element.webkitRequestFullscreen || 
                                 element.msRequestFullscreen
-    element.requestFullscreen()
+
+    element.requestFullscreen().catch(err => {
+      alert(`フルスクリーンにできないようです: ${err.message} (${err.name})`);
+    });
   }
 
+  /**
+   *  フルスクリーン表示を解除する 
+   */
   const exitFullscreen = () => {
     document.exitFullscreen = document.exitFullscreen ||
                               document.webkitExitFullscreen ||
                               document.msExitFullscreen 
 
-    document.exitFullscreen()
+    document.exitFullscreen().catch(err => {
+      alert(`フルスクリーンを解除できないようです: ${err.message} (${err.name})`);
+    });
+
   }
 
+  /**
+   *  現在フルスクリーン表示されている要素を取得する
+   */
   const getFullscreenElement = () => {
     return document.fullscreenElement ||
            document.webkitFullscreenElement ||
            document.msFullscreenElement  
   }
 
+  /**
+   *  フルスクリーン表示を切り替える
+   */
   const toggleFullscreen = (element = html) => {
     const fullScreenElement = getFullscreenElement()
 
@@ -78,7 +107,7 @@
 
   (() => {
     if (!isFullscreenEnabled()) {
-      alert('フルスクリーン機能が利用できません。')
+      alert('このブラウザではフルスクリーン機能が利用できません。')
     }
   })()
 </script>
