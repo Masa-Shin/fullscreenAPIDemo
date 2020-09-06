@@ -65,6 +65,7 @@
   const isFullscreenEnabled = () => {
     return document.fullscreenEnabled ||
            document.webkitFullscreenEnabled ||
+           document.webkitCancelFullScreen ||
            document.msFullscreenEnabled
   }
 
@@ -75,6 +76,7 @@
   const displayInFullscreen = (element) => {
     element.requestFullscreen = element.requestFullscreen || 
                                 element.webkitRequestFullscreen || 
+                                element.webkitRequestFullScreen ||
                                 element.msRequestFullscreen ||
                                 element.webkitEnterFullscreen
 
@@ -89,6 +91,7 @@
   const exitFullscreen = () => {
     document.exitFullscreen = document.exitFullscreen ||
                               document.webkitExitFullscreen ||
+                              document.webkitCancelFullScreen ||
                               document.msExitFullscreen 
 
     document.exitFullscreen().catch(err => {
@@ -103,6 +106,7 @@
   const getFullscreenElement = () => {
     return document.fullscreenElement ||
            document.webkitFullscreenElement ||
+           document.webkitCurrentFullScreenElement ||
            document.msFullscreenElement  
   }
 
