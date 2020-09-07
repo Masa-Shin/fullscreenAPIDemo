@@ -73,31 +73,38 @@
    * 指定した要素をフルスクリーン表示する
    *  @param element - フルスクリーンにするHTML, SVG, Math要素 
    */
-  const displayInFullscreen = (element) => {
+  const displayInFullscreen = async (element) => {
     element.requestFullscreen = element.requestFullscreen || 
                                 element.webkitRequestFullscreen || 
                                 element.webkitRequestFullScreen ||
                                 element.msRequestFullscreen ||
                                 element.webkitEnterFullscreen
 
-    element.requestFullscreen().catch(err => {
-      alert(`フルスクリーンにできないようです: ${err.message} (${err.name})`);
-    });
+    const ret = element.requestFullscreen()
+
+    if (ret instanceof Promise) {
+      return await ret.catch(err => {
+        alert(`フルスクリーンにできないようです: ${err.message} (${err.name})`);
+      })
+    }
   }
 
   /**
    *  フルスクリーン表示を解除する 
    */
-  const exitFullscreen = () => {
+  const exitFullscreen = async () => {
     document.exitFullscreen = document.exitFullscreen ||
                               document.webkitExitFullscreen ||
                               document.webkitCancelFullScreen ||
                               document.msExitFullscreen 
 
-    document.exitFullscreen().catch(err => {
-      alert(`フルスクリーンを解除できないようです: ${err.message} (${err.name})`);
-    });
-
+    const ret = document.exitFullscreen()
+   
+    if (ret instanceof Promise) {
+      return await ret.catch(err => {
+        alert(`フルスクリーンを解除できないようです: ${err.message} (${err.name})`);
+      })
+    }
   }
 
   /**
