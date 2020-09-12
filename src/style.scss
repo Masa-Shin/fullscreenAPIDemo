@@ -1,0 +1,47 @@
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+.button_wrapper {
+  margin: 36px auto;
+  text-align: center;
+}
+
+.button {
+  width: 11rem;
+  margin: auto auto 8px;
+  padding: .25rem 0;
+  color: #FFF;
+  background-color: #333;
+  border: 1px solid #333;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.gopher_kun_wrapper, .video_wrapper {
+  margin: 52px auto;
+  text-align: center;
+  font-size: 20px;
+}
+
+.gopher_kun {
+  margin: auto;
+  cursor: pointer;
+}
+
+.gopher_kun:fullscreen {
+  background: linear-gradient(red, orange, yellow, green, blue);
+  background: conic-gradient(red, orange, yellow, green, blue);
+}
+.gopher_kun:-webkit-full-screen {
+  background: linear-gradient(red, orange, yellow, green, blue);
+  background: conic-gradient(red, orange, yellow, green, blue);
+}
+.gopher_kun:-ms-full-screen {
+  background: linear-gradient(red, orange, yellow, green, blue);
+  background: conic-gradient(red, orange, yellow, green, blue);
+}
+
+.license {
+  font-size: 12px;
+}

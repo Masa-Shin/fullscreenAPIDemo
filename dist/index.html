@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+  <head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="description" content=""> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <title>FullScreenAPI Demo</title> 
+    <script src="bundle.js" defer></script>
+  </head> 
+  <body> 
+    <main class="main_wrapper">
+      <div class="button_wrapper">
+        <button class="button" id="request_button">
+          フルスクリーンにする   
+        </button>
+
+        <button class="button" id="exit_button">
+          フルスクリーンを解除する
+        </button>
+
+        <button class="button" id="toggle_button">
+          フルスクリーンをトグル
+        </button>
+      </div>
+      <hr>
+      <div class="gopher_kun_wrapper">
+        <h5>ゴーファーくんをタップすると巨大化します</h5>
+        <img src="assets/images/gopher_kun.png" class="gopher_kun" id="gopher_kun">
+        <div class="license">
+          The Go gopher was created by 
+          <a href="https://reneefrench.blogspot.com/" target="_blank">Renée French</a>.
+          <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" target="_blank">
+            <img 
+              alt="Creative Commons License" 
+              style="border-width:0" 
+              src="assets/images/creative_commons.png" 
+            />
+          </a> 
+        </div>
+      </div>
+      <hr>
+      <div class="video_wrapper">
+        <h5>iPhone の場合は video 要素のみフルスクリーン表示できます</h5>
+        <video class="video" id="video" width="250" playsinline controls>
+          <source src="assets/videos/cat.mp4" type="video/mp4">
+        </video>
+        <p>
+          <button class="button" id="video_request_button">
+            動画を拡大する
+          </button>
+        </p>
+      </div>
+    </main>
+  </body> 
+</html>
