@@ -75,27 +75,24 @@ const toggleFullscreen = (element = html) => {
   }
 }
  
-(() => {
-  document.getElementById('request_button').addEventListener('click', () => {
-    requestFullscreen()
-  })
-  document.getElementById('exit_button').addEventListener('click', () => {
-    exitFullscreen()
-  })
-  document.getElementById('toggle_button').addEventListener('click', () => {
-    toggleFullscreen()
-  })
-  document.getElementById('gopher_kun').addEventListener('click', (e) => {
-    toggleFullscreen(e.target)
-  })
-  document.getElementById('video').addEventListener('click', (e) => {
-    toggleFullscreen(e.target)
-  })
-  document.getElementById('video_request_button').addEventListener('click', () => {
-    requestFullscreen(video)
-  })
-
-  if (!isFullscreenEnabled()) {
-    alert('このブラウザでは一部のフルスクリーン機能が利用できません。')
-  }
-})()
+document.getElementById('request_button').addEventListener('click', () => {
+  requestFullscreen()
+})
+document.getElementById('exit_button').addEventListener('click', () => {
+  exitFullscreen()
+})
+document.getElementById('toggle_button').addEventListener('click', () => {
+  toggleFullscreen()
+})
+document.getElementById('gopher_kun').addEventListener('click', (e) => {
+  toggleFullscreen(e.target)
+})
+document.getElementById('video').addEventListener('click', (e) => {
+  toggleFullscreen(e.target)
+})
+document.getElementById('video_request_button').addEventListener('click', () => {
+  requestFullscreen(video)
+})
+if (!isFullscreenEnabled()) {
+  alert('このブラウザでは一部のフルスクリーン機能が利用できません。')
+}
